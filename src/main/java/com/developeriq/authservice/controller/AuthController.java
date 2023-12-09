@@ -1,10 +1,8 @@
 package com.developeriq.authservice.controller;
 
 import com.developeriq.authservice.Services.AuthService;
-import com.developeriq.authservice.dto.AuthRequest;
-import com.developeriq.authservice.dto.AuthResponse;
-import com.developeriq.authservice.dto.RegisterRequest;
-import com.developeriq.authservice.dto.RegisterResponse;
+import com.developeriq.authservice.dto.*;
+import com.developeriq.authservice.exception.UnAuthorisedException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +19,9 @@ public class AuthController {
         return authService.authenticate(authRequest);
     }
     @PostMapping("/validateToken")
-    public String validateToken() {
-        return "Token";
+    public ValidateTokenResponse validateToken(@RequestBody ValidateTokenRequest validateTokenReq)
+            throws UnAuthorisedException {
+        return authService.validate(validateTokenReq);
     }
 
     @PostMapping("/register")

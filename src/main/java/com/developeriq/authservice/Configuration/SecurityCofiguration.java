@@ -35,10 +35,10 @@ public class SecurityCofiguration {
         return httpSec
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(customizer -> customizer
-                .requestMatchers("/api/authenticate").permitAll()
-                 .requestMatchers("/api/register").permitAll()
-                //.requestMatchers("/api/**").authenticated()
-                .anyRequest().denyAll()
+                                .requestMatchers("/api/authenticate").permitAll()
+                                .requestMatchers("/api/register").permitAll()
+                                .requestMatchers("/api/validateToken").permitAll()
+                                .anyRequest().denyAll()
                 )
                 .exceptionHandling(customizer ->
                         customizer.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))

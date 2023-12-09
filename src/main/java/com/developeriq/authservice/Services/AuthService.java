@@ -1,15 +1,15 @@
 package com.developeriq.authservice.Services;
 
-import com.developeriq.authservice.dto.AuthRequest;
-import com.developeriq.authservice.dto.AuthResponse;
-import com.developeriq.authservice.dto.RegisterRequest;
-import com.developeriq.authservice.dto.RegisterResponse;
+import com.developeriq.authservice.dto.*;
+import com.developeriq.authservice.exception.UnAuthorisedException;
 import com.developeriq.authservice.model.Role;
 import com.developeriq.authservice.model.UserInfo;
 import com.developeriq.authservice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -48,6 +48,19 @@ public class AuthService {
         return RegisterResponse.builder()
                 .token(jwtService.generateToken(userInfo))
                 .build();
+
+    }
+
+    public ValidateTokenResponse validate(ValidateTokenRequest request) throws UnAuthorisedException {
+        return ValidateTokenResponse.builder()
+                .token(request.getToken())
+                .isValid(userRepository
+                .findByUserName(jwtService.extractUserName(request.getToken()))
+                .map(userInfo -> jwtService.validateToken(request.getToken(), userInfo))
+                .orElseThrow(() -> new UnAuthorisedException("User Not Found")))
+                .build();
+
+
 
     }
 
