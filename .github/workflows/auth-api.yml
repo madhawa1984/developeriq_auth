@@ -31,8 +31,8 @@ jobs:
         server-password: MAVEN_PASSWORD
     - name: check credentials
       run: | 
-        echo "ddd"${{ secrets.DOCKER_USERNAME }}
-         echo "kkkk"${{ secrets.DOCKER_USERNAME }}
+        echo "ddd".${{ secrets.DOCKER_USERNAME }}
+         echo "kkkk".${{ secrets.DOCKER_USERNAME }}
         
     - name: Build with Maven and Push
       run: |
