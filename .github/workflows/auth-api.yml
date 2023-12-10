@@ -28,7 +28,10 @@ jobs:
         distribution: 'temurin'
         
     - name: Build with Maven and Push
-      run: mvn -U -X -B package  docker:push --file pom.xml
+      run: |
+        pwd
+        ls -altr
+        mvn -U -X -B package  docker:push --file pom.xml
       env: 
           MAVEN_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
