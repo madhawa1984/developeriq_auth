@@ -29,6 +29,10 @@ jobs:
         server-id: docker.io
         server-username: MAVEN_USERNAME
         server-password: MAVEN_PASSWORD
+    - name: check credentials
+      run: | 
+        echo "ddd"${{ secrets.DOCKER_USERNAME }}
+         echo "kkkk"${{ secrets.DOCKER_USERNAME }}
         
     - name: Build with Maven and Push
       run: |
@@ -38,6 +42,7 @@ jobs:
       env: 
           MAVEN_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    - name: check credentials
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
