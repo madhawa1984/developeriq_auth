@@ -26,6 +26,9 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
+        server-id: docker.io
+        server-username: MAVEN_USERNAME
+        server-password: MAVEN_PASSWORD
         
     - name: Build with Maven and Push
       run: |
