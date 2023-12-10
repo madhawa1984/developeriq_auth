@@ -105,9 +105,9 @@
 				<configuration>
 					<username>madhawa1984@gmail.com</username>
 					<password>Madc19@Nira</password>
-					<repository>developeriq-repo/user-service</repository>
+					<repository>madhawachaminda1984</repository>
 					<tag>${project.version}</tag>
-					<!--<useMavenSettingsForAuth>true</useMavenSettingsForAuth>-->
+					<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
 				</configuration>
 			<!--	<dependencies>
 					&lt;!&ndash; To make this work on JDK 9+ &ndash;&gt;
