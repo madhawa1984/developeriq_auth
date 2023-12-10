@@ -105,7 +105,7 @@
 				<configuration>
 					<username>madhawa1984@gmail.com</username>
 					<password>Madc19@Nira</password>
-					<repository>madhawachaminda1984</repository>
+					<repository>madhawachaminda1984/auth-service-2</repository>
 					<tag>${project.version}</tag>
 					<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
 				</configuration>
